@@ -9,6 +9,7 @@ import { ProductsComponent } from './component/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './shared/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdvanceEPlanComponent } from './component/e-pay/advance-eplan/advance-eplan.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +17,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     CartComponent,
     ProductsComponent,
-    FilterPipe
+    FilterPipe,
+    AdvanceEPlanComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
