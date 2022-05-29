@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   baseURL: "https://apitest.authorize.net/xml/v1/request.api",
   apiLoginID: "75Ex25W2pc",
-  transactionKey: "4bAVrpX3593D7ana"
+  transactionKey: "4bAVrpX3593D7ana",
+  api_url: 'http://localhost:9000'
 };
 
 /*
