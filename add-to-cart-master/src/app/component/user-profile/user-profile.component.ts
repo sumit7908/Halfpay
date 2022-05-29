@@ -86,7 +86,9 @@ export class UserProfileComponent implements OnInit {
     }
     this.user_updated_data = this.userProfileForm.value;
     this.user_dto = {
-      name: this.user_updated_data.name,
+      fname: this.user_updated_data.fname,
+      lname: this.user_updated_data.lname,
+
       mobNumber: this.user_updated_data.mobNumber,
       email: this.user_updated_data.email,
       password: this.user_updated_data.password,
@@ -94,6 +96,8 @@ export class UserProfileComponent implements OnInit {
         id: 0,
         addLine1: this.user_updated_data.addLine1,
         city: this.user_updated_data.city,
+        state: this.user_updated_data.state,
+
         country: this.user_updated_data.country,
         zipCode: this.user_updated_data.zipCode,
       },

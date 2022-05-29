@@ -20,7 +20,5 @@ export class LoginSignupService {
     return this.apiService.post(this.reg_url + '/user', user_dto);
   }
 
-  adminLogin(user_name, password): Observable<any> {
-    return this.apiService.get(this.login_url + '/user?email=' + user_name + '&password=' + password + '&role=admin');
-  }
+  
 }
