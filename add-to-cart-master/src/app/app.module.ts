@@ -11,7 +11,6 @@ import { FilterPipe } from './shared/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdvanceEPlanComponent } from './component/e-pay/advance-eplan/advance-eplan.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
-import { SearchComponent } from './component/search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { SearchComponent } from './component/search/search.component';
     ProductsComponent,
     FilterPipe,
     AdvanceEPlanComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,

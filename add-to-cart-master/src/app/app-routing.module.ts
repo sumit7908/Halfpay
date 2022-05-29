@@ -4,7 +4,6 @@ import { GooglePayButtonComponent } from '@google-pay/button-angular';
 import { CartComponent } from './component/cart/cart.component';
 import { AdvanceEPlanComponent } from './component/e-pay/advance-eplan/advance-eplan.component';
 import { ProductsComponent } from './component/products/products.component';
-import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'products',pathMatch:'full'},
@@ -12,7 +11,6 @@ const routes: Routes = [
   {path:'cart', component: CartComponent},
   {path:'payment', component: AdvanceEPlanComponent},
   {path:'gpay', component: GooglePayButtonComponent},
-  {path:'search', component: SearchComponent}
   
 
 
