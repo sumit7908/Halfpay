@@ -35,21 +35,14 @@ export class SigninSignupComponent implements OnInit {
     this.signUpform = this.formBuilder.group({
       name: ['', Validators.required],
       mobNumber: ['', Validators.required],
-      age: ['', Validators.required],
-      dob: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       addLine1: ['', Validators.required],
-      addLine2: [],
       city: ['', Validators.required],
+      country: ['', Validators.required],
       state: ['', Validators.required],
       zipCode: ['', Validators.required],
-      language: ['', Validators.required],
-      gender: ['', Validators.required],
-      aboutYou: ['', Validators.required],
-      uploadPhoto: ['', Validators.required],
-      agreetc: ['', Validators.required],
-      role: ['', Validators.required],
+     
 
     })
 
@@ -63,17 +56,10 @@ export class SigninSignupComponent implements OnInit {
   onSubmitSignUp() {
     this.signUpsubmitted = true;
     if (this.signUpform.invalid) {
-      // alert('Error!! :-)\n\n' + JSON.stringify(this.signUpform.value))
       return;
     }
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signUpform.value))
-    // console.log(this.signUpform.value)
     this.user_reg_data = this.signUpform.value;
     this.user_dto = {
-      // addLine1: this.user_reg_data.addLine1,
-      // addLine2: this.user_reg_data.addLine2,
-      age: this.user_reg_data.age,
-      // city: this.user_reg_data.city,
       email: this.user_reg_data.email,
       address: {
         id: 0,
@@ -85,9 +71,6 @@ export class SigninSignupComponent implements OnInit {
       mobNumber: this.user_reg_data.mobNumber,
       name: this.user_reg_data.name,
       password: this.user_reg_data.password,
-      // state: this.user_reg_data.state,
-      // zipCode: this.user_reg_data.zipCode,
-      role: this.user_reg_data.role
     }
     this.logsign_service.userRegister(this.user_dto).subscribe(data => {
       // console.log(data);
@@ -103,18 +86,7 @@ export class SigninSignupComponent implements OnInit {
     this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword).subscribe(data => {
       this.user_data = data;
       if (this.user_data.length == 1) {
-        // alert("Validate")
-        if (this.user_data[0].role == "seller") {
-          sessionStorage.setItem("user_session_id", this.user_data[0].id);
-          sessionStorage.setItem("role", this.user_data[0].role);
-          this.router.navigateByUrl('/seller-dashboard');
-        } else if (this.user_data[0].role == "buyer") {
-          sessionStorage.setItem("user_session_id", this.user_data[0].id);
-          sessionStorage.setItem("role", this.user_data[0].role);
-          this.router.navigateByUrl('/buyer-dashboard');
-        } else {
-          alert("Invalid-user-role")
-        }
+        
       } else {
         alert("Invalid")
       }

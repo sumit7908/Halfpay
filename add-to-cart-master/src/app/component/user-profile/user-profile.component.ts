@@ -88,7 +88,6 @@ export class UserProfileComponent implements OnInit {
     this.user_dto = {
       name: this.user_updated_data.name,
       mobNumber: this.user_updated_data.mobNumber,
-      age: this.user_updated_data.age,
       email: this.user_updated_data.email,
       password: this.user_updated_data.password,
       address: {
@@ -98,7 +97,6 @@ export class UserProfileComponent implements OnInit {
         country: this.user_updated_data.country,
         zipCode: this.user_updated_data.zipCode,
       },
-      role: this.user_role
     }
     this.user_service.updateUserData(this.user_id, this.user_dto).subscribe(data => {
       this.toastr.success('Profile Updated Successfully!', 'User Profile!');
