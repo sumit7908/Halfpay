@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
@@ -22,7 +23,8 @@ export class SigninSignupComponent implements OnInit {
 
   signInFormValue: any = {};
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private logsign_service: LoginSignupService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, 
+    private logsign_service: LoginSignupService, private http: HttpClient) { }
 
   ngOnInit() {
     this.href = this.router.url;
@@ -38,7 +40,7 @@ export class SigninSignupComponent implements OnInit {
       mobNumber: ['', Validators.required],     
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      addLine1: ['', Validators.required],
+      address: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
       state: ['', Validators.required],
@@ -66,23 +68,22 @@ export class SigninSignupComponent implements OnInit {
     this.user_dto = {
     
       email: this.user_reg_data.email,
-      address: {
-        id: 0,
-        addLine1: this.user_reg_data.addLine1,
+    
+        address: this.user_reg_data.address,
         city: this.user_reg_data.city,
         state: this.user_reg_data.state,
 
         country: this.user_reg_data.country,
-        zipCode: this.user_reg_data.zipCode,
-      },
-      mobNumber: this.user_reg_data.mobNumber,
-      fname: this.user_reg_data.fname,
-      lname: this.user_reg_data.lname,
+        pin: this.user_reg_data.zipCode,
+      
+        mob_no: this.user_reg_data.mobNumber,
+        firstName: this.user_reg_data.fname,
+        lastName: this.user_reg_data.lname,
 
       password: this.user_reg_data.password,
      
     }
-    this.logsign_service.userRegister(this.user_dto).subscribe(data => {
+    this.logsign_service.registeruser(this.user_dto).subscribe(data => {
       alert("Success");
       this.router.navigateByUrl('/sign-in');
     }, err => {
@@ -91,7 +92,8 @@ export class SigninSignupComponent implements OnInit {
   }
 
   onSubmitSignIn() {
-    this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword).subscribe(data => {
+    this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword)
+    .subscribe(data => {
       this.user_data = data;
       if (this.user_data.length == 1) {
         /**if (this.user_data[0].role == "seller") {

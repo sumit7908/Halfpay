@@ -86,21 +86,19 @@ export class UserProfileComponent implements OnInit {
     }
     this.user_updated_data = this.userProfileForm.value;
     this.user_dto = {
-      fname: this.user_updated_data.fname,
-      lname: this.user_updated_data.lname,
+      firstName: this.user_updated_data.fname,
+      lastName: this.user_updated_data.lname,
 
-      mobNumber: this.user_updated_data.mobNumber,
+      mob_no: this.user_updated_data.mobNumber,
       email: this.user_updated_data.email,
       password: this.user_updated_data.password,
-      address: {
-        id: 0,
-        addLine1: this.user_updated_data.addLine1,
+        address: this.user_updated_data.addLine1,
         city: this.user_updated_data.city,
         state: this.user_updated_data.state,
 
         country: this.user_updated_data.country,
-        zipCode: this.user_updated_data.zipCode,
-      },
+        pin: this.user_updated_data.zipCode,
+      
     }
     this.user_service.updateUserData(this.user_id, this.user_dto).subscribe(data => {
       this.toastr.success('Profile Updated Successfully!', 'User Profile!');

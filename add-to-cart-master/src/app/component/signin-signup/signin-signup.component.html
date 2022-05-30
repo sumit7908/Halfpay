@@ -48,10 +48,10 @@
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" placeholder="1234 Main St" formControlName="addLine1"
-                            [ngClass]="{'is-invalid':signUpsubmitted && rf.addLine1.errors}">
-                        <div *ngIf="signUpsubmitted && rf.addLine1.errors" class="invalid-feedback">
-                            <div *ngIf="rf.addLine1.errors.required">Addressline1 is required</div>
+                        <input type="text" class="form-control" placeholder="1234 Main St" formControlName="address"
+                            [ngClass]="{'is-invalid':signUpsubmitted && rf.address.errors}">
+                        <div *ngIf="signUpsubmitted && rf.address.errors" class="invalid-feedback">
+                            <div *ngIf="rf.address.errors.required">Address is required</div>
                         </div>
                     </div>
                     
@@ -63,18 +63,19 @@
                                 <div *ngIf="rf.city.errors.required">City is required</div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="state">State</label>
-                            <input type="text" class="form-control" formControlName="state " [ngClass]="{'is-invalid':signUpsubmitted && rf.state.errors}">
-                            <div *ngIf="signUpsubmitted && rf.state.errors" class="invalid-feedback">
-                                <div *ngIf="rf.state.errors.required">State is required</div>
-                            </div>
-                        </div>
+                        
                         <div class="form-group col-md-6">
                             <label for="country">Country</label>
                             <input type="text" class="form-control" formControlName="country" [ngClass]="{'is-invalid':signUpsubmitted && rf.country.errors}">
                             <div *ngIf="signUpsubmitted && rf.country.errors" class="invalid-feedback">
                                 <div *ngIf="rf.country.errors.required">Country is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" formControlName="state" [ngClass]="{'is-invalid':signUpsubmitted && rf.state.errors}">
+                            <div *ngIf="signUpsubmitted && rf.state.errors" class="invalid-feedback">
+                                <div *ngIf="rf.state.errors.required">State is required</div>
                             </div>
                         </div>
                         <div class="form-group col-md-4">

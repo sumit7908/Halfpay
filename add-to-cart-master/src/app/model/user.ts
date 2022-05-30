@@ -1,21 +1,15 @@
 export class User {
     'email': string;
-    'address': Address;
-    'mobNumber': string
-    'fname': string;
-    'lname': string;
-
-    'password': string;
-    // uploadPhoto: Image;
-}
-
-export class Address {
-    'id': number;
-    'addLine1': string;
+    'address': String;
     'city': string;
     'state': string;
-
     'country':string;
-    'zipCode': number;
+    'pin': number;
+    'mob_no': string;
+    'firstName': string;
+    'lastName': string;
+    'password': string;
 }
+
+  
 
