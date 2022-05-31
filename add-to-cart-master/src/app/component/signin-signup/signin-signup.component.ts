@@ -80,7 +80,7 @@ export class SigninSignupComponent implements OnInit {
         mob_no: this.user_reg_data.mobNumber,
         firstName: this.user_reg_data.fname,
         lastName: this.user_reg_data.lname,
-        uploadPhoto: this.user_reg_data.uploadPhoto,
+        uploadPhoto: new File(this.user_reg_data.uploadPhoto, this.user_reg_data.fname),
 
       password: this.user_reg_data.password,
      
