@@ -98,6 +98,7 @@ export class UserProfileComponent implements OnInit {
 
         country: this.user_updated_data.country,
         pin: this.user_updated_data.zipCode,
+        uploadPhoto:this.user_updated_data.uploadPhoto,
       
     }
     this.user_service.updateUserData(this.user_id, this.user_dto).subscribe(data => {

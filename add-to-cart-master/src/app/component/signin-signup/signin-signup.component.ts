@@ -45,6 +45,7 @@ export class SigninSignupComponent implements OnInit {
       country: ['', Validators.required],
       state: ['', Validators.required],
       zipCode: ['', Validators.required],
+      uploadPhoto: [],
      
 
     })
@@ -79,6 +80,7 @@ export class SigninSignupComponent implements OnInit {
         mob_no: this.user_reg_data.mobNumber,
         firstName: this.user_reg_data.fname,
         lastName: this.user_reg_data.lname,
+        uploadPhoto: this.user_reg_data.uploadPhoto,
 
       password: this.user_reg_data.password,
      
@@ -111,6 +113,9 @@ export class SigninSignupComponent implements OnInit {
         } else {
           alert("Invalid-user-role")
         }**/
+
+        this.router.navigateByUrl('/products');
+
         alert("Success")
       } else {
         alert("Invalid")
