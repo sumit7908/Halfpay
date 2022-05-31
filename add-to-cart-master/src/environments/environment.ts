@@ -7,7 +7,7 @@ export const environment = {
   baseURL: "https://apitest.authorize.net/xml/v1/request.api",
   apiLoginID: "75Ex25W2pc",
   transactionKey: "4bAVrpX3593D7ana",
-  server_url: "http://localhost:3000",
+  server_url: "http://localhost:8080",
 
 };
 

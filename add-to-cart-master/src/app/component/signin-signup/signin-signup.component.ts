@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
@@ -22,7 +23,8 @@ export class SigninSignupComponent implements OnInit {
 
   signInFormValue: any = {};
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private logsign_service: LoginSignupService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, 
+    private logsign_service: LoginSignupService, private http: HttpClient) { }
 
   ngOnInit() {
     this.href = this.router.url;
@@ -33,11 +35,12 @@ export class SigninSignupComponent implements OnInit {
     }
 
     this.signUpform = this.formBuilder.group({
-      name: ['', Validators.required],
-      mobNumber: ['', Validators.required],
+      fname: ['', Validators.required],
+      lname: [],
+      mobNumber: ['', Validators.required],     
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      addLine1: ['', Validators.required],
+      address: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
       state: ['', Validators.required],
@@ -51,29 +54,36 @@ export class SigninSignupComponent implements OnInit {
     })
   }
 
-  get rf() { return this.signUpform.controls; }
+  get rf() { 
+    return this.signUpform.controls; 
+  }
 
   onSubmitSignUp() {
     this.signUpsubmitted = true;
     if (this.signUpform.invalid) {
       return;
     }
+ 
     this.user_reg_data = this.signUpform.value;
     this.user_dto = {
+    
       email: this.user_reg_data.email,
-      address: {
-        id: 0,
-        addLine1: this.user_reg_data.addLine1,
+    
+        address: this.user_reg_data.address,
         city: this.user_reg_data.city,
+        state: this.user_reg_data.state,
+
         country: this.user_reg_data.country,
-        zipCode: this.user_reg_data.zipCode,
-      },
-      mobNumber: this.user_reg_data.mobNumber,
-      name: this.user_reg_data.name,
+        pin: this.user_reg_data.zipCode,
+      
+        mob_no: this.user_reg_data.mobNumber,
+        firstName: this.user_reg_data.fname,
+        lastName: this.user_reg_data.lname,
+
       password: this.user_reg_data.password,
+     
     }
-    this.logsign_service.userRegister(this.user_dto).subscribe(data => {
-      // console.log(data);
+    this.logsign_service.registeruser(this.user_dto).subscribe(data => {
       alert("Success");
       this.router.navigateByUrl('/sign-in');
     }, err => {
@@ -82,11 +92,26 @@ export class SigninSignupComponent implements OnInit {
   }
 
   onSubmitSignIn() {
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signInFormValue));
-    this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword).subscribe(data => {
+    const json = '{ "name": "Foo", "description": "Bar" }';
+    const parsed = JSON.parse(json);
+    console.log("Type :", typeof (parsed));
+
+    this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword)
+    .subscribe(data => {
       this.user_data = data;
-      if (this.user_data.length == 1) {
-        
+      if (this.user_data != null) {
+        /**if (this.user_data[0].role == "seller") {
+          sessionStorage.setItem("user_session_id", this.user_data[0].id);
+          sessionStorage.setItem("role", this.user_data[0].role);
+          this.router.navigateByUrl('/seller-dashboard');
+        } else if (this.user_data[0].role == "buyer") {
+          sessionStorage.setItem("user_session_id", this.user_data[0].id);
+          sessionStorage.setItem("role", this.user_data[0].role);
+          this.router.navigateByUrl('/buyer-dashboard');
+        } else {
+          alert("Invalid-user-role")
+        }**/
+        alert("Success")
       } else {
         alert("Invalid")
       }
