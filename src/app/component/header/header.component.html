@@ -1,0 +1,28 @@
+    <div class="navbar navbar-dark bg-dark">
+        <div class="navbar-brand align-item-center d-flex">
+            <img src="../assets/Images/flogo3.png"  routerLink="/products" style="width:50%; height:45px; max-width:145px;"/>
+            <i style="font-size: 0px;" class="">&nbsp;
+                
+            </i>
+            <strong style="font-size: 30px;" routerLink="/products">HalfPay</strong>
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+            </div>
+            <span class="fas fa-search search-icon"></span>
+
+                    <a class="nav-link" routerLink="/sign-in">Sign In</a>
+                    <a class="nav-link" routerLink="/sign-up">Sign Up</a>
+            <ul class="navbar-nav ml-auto" *ngIf="logged_in">
+                <li class="nav-item">
+                    <a class="nav-link sim-pointer" routerLink="/my-profile">{{'header.my_profile'}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sim-pointer" (click)="logOut()">{{'header.signout'}}</a>
+                </li>
+            </ul>
+
+        </div>
+      
+
+        
+    </div>
