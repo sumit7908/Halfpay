@@ -92,10 +92,14 @@ export class SigninSignupComponent implements OnInit {
   }
 
   onSubmitSignIn() {
+    const json = '{ "name": "Foo", "description": "Bar" }';
+    const parsed = JSON.parse(json);
+    console.log("Type :", typeof (parsed));
+
     this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword)
     .subscribe(data => {
       this.user_data = data;
-      if (this.user_data.length == 1) {
+      if (this.user_data != null) {
         /**if (this.user_data[0].role == "seller") {
           sessionStorage.setItem("user_session_id", this.user_data[0].id);
           sessionStorage.setItem("role", this.user_data[0].role);
@@ -107,6 +111,7 @@ export class SigninSignupComponent implements OnInit {
         } else {
           alert("Invalid-user-role")
         }**/
+        alert("Success")
       } else {
         alert("Invalid")
       }
