@@ -256,7 +256,7 @@ ul.pagination li a {
   text-align: center;
   border-color: transparent;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-  color: rgb(117, 29, 29);
+  color: #666;
 }
 
 ul.pagination .active a {
@@ -427,11 +427,7 @@ button {
   outline: 0;
 }
 
-.bg-shadow {
-  background-color: #fff;
-  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-}
+
 
 .section {
   padding: 100px 0;
@@ -980,11 +976,7 @@ ul.pagination .active a {
   margin-bottom: 15px;
 }
 
-@media (max-width: 768px) {
-  .hero-area .content-block h1, .hero-area-2 .content-block h1 {
-    font-size: 40px;
-  }
-}
+
 
 .hero-area .content-block p, .hero-area-2 .content-block p {
   color: #fff;
