@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+import { Image } from 'src/app/model/image';
 import { User } from 'src/app/model/user';
 import { LoginSignupService } from 'src/app/service/login-signup.service';
 
@@ -12,6 +13,15 @@ import { LoginSignupService } from 'src/app/service/login-signup.service';
 })
 export class SigninSignupComponent implements OnInit {
 
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+  login = false;
+
+  photo: Array<Image>;
   regForm: Boolean = false;
   signUpform: FormGroup;
   signInform: FormGroup;
@@ -60,12 +70,26 @@ export class SigninSignupComponent implements OnInit {
   }
 
   onSubmitSignUp() {
-    this.signUpsubmitted = true;
-    if (this.signUpform.invalid) {
-      return;
-    }
- 
+    console.log(this.selectedFile);
+    
+    const uploadImageData = new FormData();
+    console.log(this.selectedFile.name)
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+  
+    this.http.post('http://localhost:8020/upload', uploadImageData, { observe: 'response' })
+      .subscribe((response) => {
+        if (response.status === 200) {
+          this.message = 'Image uploaded successfully';
+        } else {
+          this.message = 'Image not uploaded successfully';
+        }
+      }
+      );
+
+
+   
     this.user_reg_data = this.signUpform.value;
+    this.user_reg_data.uploadPhoto = this.selectedFile;
     this.user_dto = {
     
       email: this.user_reg_data.email,
@@ -92,12 +116,12 @@ export class SigninSignupComponent implements OnInit {
       alert("Some Error Occured");
     })
   }
-
+  public onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    
+  }
   onSubmitSignIn() {
-    const json = '{ "name": "Foo", "description": "Bar" }';
-    const parsed = JSON.parse(json);
-    console.log("Type :", typeof (parsed));
-
+  
     this.logsign_service.authLogin(this.signInFormValue.userEmail, this.signInFormValue.userPassword)
     .subscribe(data => {
       this.user_data = data;
@@ -113,12 +137,13 @@ export class SigninSignupComponent implements OnInit {
         } else {
           alert("Invalid-user-role")
         }**/
-
+        alert("Success")
         this.router.navigateByUrl('/products');
 
-        alert("Success")
+        
+
       } else {
-        alert("Invalid")
+        alert("Invalid Credentials")
       }
       console.log(this.user_data);
 
@@ -126,5 +151,10 @@ export class SigninSignupComponent implements OnInit {
       console.log("My error", error);
     })
   }
+
+
+
+
+
 
 }
