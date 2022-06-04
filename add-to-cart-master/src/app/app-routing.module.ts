@@ -6,6 +6,10 @@ import { AdvanceEPlanComponent } from './component/e-pay/advance-eplan/advance-e
 import { ProductsComponent } from './component/products/products.component';
 import { SigninSignupComponent } from './component/signin-signup/signin-signup.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { SellerDashboardComponent } from './component/seller-dashboard/seller-dashboard.component';
+import { BuyerDashboardComponent } from './component/buyer-dashboard/buyer-dashboard.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { LogoutComponent } from './component/logout/logout.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'products',pathMatch:'full'},
@@ -16,6 +20,10 @@ const routes: Routes = [
   { path: "my-profile", component: UserProfileComponent },
   { path: "sign-in", component: SigninSignupComponent },
   { path: "sign-up", component: SigninSignupComponent },
+  { path: "seller-dashboard", component: SellerDashboardComponent },
+  { path: "buyer-dashboard", component: BuyerDashboardComponent},
+  { path: "checkout", component: CheckoutComponent },
+  { path: "logout", component: LogoutComponent }
   
   
 
