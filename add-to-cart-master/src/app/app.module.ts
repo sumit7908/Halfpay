@@ -18,6 +18,7 @@ import { SellerDashboardComponent } from './component/seller-dashboard/seller-da
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { BuyerDashboardComponent } from './component/buyer-dashboard/buyer-dashboard.component';
 import { LogoutComponent } from './component/logout/logout.component';
+import { ProductCrudComponent } from './component/product-crud/product-crud.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LogoutComponent } from './component/logout/logout.component';
     SellerDashboardComponent,
     CheckoutComponent,
     BuyerDashboardComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProductCrudComponent
     
   ],
   imports: [

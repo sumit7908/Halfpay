@@ -10,6 +10,7 @@ import { SellerDashboardComponent } from './component/seller-dashboard/seller-da
 import { BuyerDashboardComponent } from './component/buyer-dashboard/buyer-dashboard.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { LogoutComponent } from './component/logout/logout.component';
+import { ProductCrudComponent } from './component/product-crud/product-crud.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'products',pathMatch:'full'},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: "seller-dashboard", component: SellerDashboardComponent },
   { path: "buyer-dashboard", component: BuyerDashboardComponent},
   { path: "checkout", component: CheckoutComponent },
-  { path: "logout", component: LogoutComponent }
+  { path: "logout", component: LogoutComponent },
+  { path: "sell", component: ProductCrudComponent},
   
   
 
